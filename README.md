@@ -1,93 +1,101 @@
+# NLP Web Application with User Authentication
 
-# NLPApp - Natural Language Processing GUI
+A comprehensive web application built using **Flask** for performing **Sentiment Analysis**, **Named Entity Recognition (NER)**, and **Text Summarization**. The app includes a user authentication system featuring **login**, **registration**, and a personalized **profile page** where users can access various NLP tasks.
 
-NLPApp is a GUI-based application built using Python's Tkinter library that allows users to perform various Natural Language Processing (NLP) tasks such as sentiment analysis, named entity recognition, and text summarization. This application interacts with an external API and a database to provide NLP functionalities.
+## Demo
+You can access the application [here](#) (Replace with deployment link if available).
 
 ## Features
-
-- **User Authentication**: Register and log in securely.
-- **Sentiment Analysis**: Analyze the sentiment of provided text.
-- **Named Entity Recognition (NER)**: Identify named entities within the given text.
-- **Text Summarization**: Create summaries for long texts.
-- **User-friendly Interface**: Easy-to-use GUI built with Tkinter.
-
-## Requirements
-
-- Python 3.6 or later
-- Libraries:
-  - `tkinter`
-  - `messagebox`
+- **User Authentication**:
+  - **Login** and **Registration** pages.
+  - Personalized **Profile Page**.
   
-- Custom modules:
-  - `myDB.py` (handles database operations)
-  - `myapi.py` (interacts with NLP API)
+- **NLP Functionalities**:
+  - **Sentiment Analysis**: Classifies text into positive, negative, or neutral sentiment.
+  - **Named Entity Recognition (NER)**: Extracts entities such as names, organizations, and locations from the text.
+  - **Summarization**: Provides a summarized version of the input text.
 
-> **Note**: Ensure `myDB.py` and `myapi.py` files are present in the project directory.
+## Tech Stack
+- **Backend**: Flask (Python)
+- **Frontend**: HTML, CSS
+- **NLP**: NLPCLOUD
+- **Deployment**: Gunicorn, Docker (optional for production)
 
-## Installation
+## Setup
 
-1. **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/NLPApp.git
-    ```
-2. **Navigate to the project directory**
-    ```bash
-    cd NLPApp
-    ```
-3. **Install required Python packages**
-    ```bash
-    pip install tk
-    ```
-
-4. **Run the application**
-    ```bash
-    python nlpapp.py
-    ```
-
-## Folder Structure
-
+### 1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/nlp-flask-app.git
+cd nlp-flask-app
 ```
-NLPApp/
-│
-├── nlpapp.py          # Main GUI application file
-├── myDB.py            # Database operations (custom module)
-├── myapi.py           # API interaction module
-├── RESOURCES/         # Folder for resources like icons
-│   └── favicon.ico    # Favicon for the application
-└── README.md          # ReadMe file
+
+### 2. Set up a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate   # For Windows use `venv\Scripts\activate`
 ```
+
+### 3. Install the dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set up the database (SQLite in this example):
+```bash
+flask shell
+from DB import Database
+dbo = Database()
+dbo.create_all()
+exit()
+```
+
+### 5. Run the application:
+```bash
+flask run
+```
+
+Access the application at `http://127.0.0.1:5000/`.
 
 ## Usage
 
-1. **Starting the Application**
-   - Run `nlpapp.py` to launch the GUI.
-   
-2. **Registration**
-   - Enter your name, email, and password to create an account.
+### 1. User Authentication:
+- **Registration**: New users can register on the `/register` page.
+- **Login**: Existing users can log in through the `/` (home) page.
 
-3. **Login**
-   - Enter your registered email and password to access the application.
+### 2. NLP Actions:
+Once logged in, users are directed to their **profile page**, where they can choose between:
+- **Sentiment Analysis**: Classify the sentiment of text input.
+- **Named Entity Recognition (NER)**: Extract and display entities from text.
+- **Summarization**: Generate a concise summary from input text.
 
-4. **Perform NLP Tasks**
-   - Use the home page to access features like Sentiment Analysis, Named Entity Recognition, and Text Summarization.
+### Example:
+To perform sentiment analysis:
+1. Go to the **Sentiment Analysis** page.
+2. Enter your text and submit the form.
+3. The result will display whether the sentiment is positive, negative, or neutral.
 
-## How It Works
-
-- **Database Operations (`myDB.py`)**:
-  - Handles user registration and login authentication.
-  
-- **API Interaction (`myapi.py`)**:
-  - Connects to an external NLP API to perform sentiment analysis, named entity recognition, and text summarization.
+## Project Structure
+```
+nlp-flask-app/
+│
+├── app.py               # Main Flask application
+├── DB.py                # Database handling (user authentication)
+├── API.py               # External API calls for NLP tasks
+├── templates/           # HTML templates
+│   ├── login.html       # Login page
+│   ├── registration.html # Registration page
+│   ├── profile.html     # Profile page
+│   ├── NER.html         # NER input page
+│   ├── Sentiment.html   # Sentiment Analysis page
+│   ├── summary.html     # Summarization page
+├── static/              # Static files (CSS, JS)
+│   ├── styles.css       # Styling for the app
+├── requirements.txt     # Python dependencies
+└── README.md            # Project README file
+```
 
 ## Contributing
-
-Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions and improvements.
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](#) (Replace with GitHub issues link).
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Tkinter](https://docs.python.org/3/library/tkinter.html) for providing the GUI framework.
-- Any external API service used for NLP functionalities.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
